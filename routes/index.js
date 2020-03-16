@@ -1,9 +1,43 @@
 const express = require('express');
 const router = express.Router();
+// const Product = require('./admin/products/models/Products')
 
-/* GET home page. */
+// function paginate(req, res, next){
+//   const perPage =6;
+//   const page = req.params.pageNumber;
+//   Product.find().skip(perPage *(page-1))
+//   .limit(perPage)
+//   .populate('category')
+//   .exec((err, products)=>{
+//     if(err) return next(err)
+//     Product.countDocuments()
+//     .exec((err, count)=>{
+//       if(err) return next(err)
+//       res.render('main/home-products',{
+//         products,
+//         pages: Math.ceil(count / perPage),
+//         page: Number(page)
+//       })
+//     })
+//   })
+// }
+
+//Render home paige
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  // if(req.isAuthenticated()){
+  //   paginate(req, res, next);
+  // } else{
+    return res.render( 'main/home');
+  // }
 });
+
+// router.get('/page/:pageNumber', (req, res, next)=>{
+//   paginate(req, res, next);
+// })
+
+router.get('/logout', (req, res)=>{
+  req.logout();
+  return res.redirect('/');
+})
 
 module.exports = router;
