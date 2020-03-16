@@ -4,11 +4,11 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
-// const flash = require('connect-flash')
+const flash = require('connect-flash')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
-// const methodOverride = require('method-override');
+const methodOverride = require('method-override');
 require('./lib/passport');
 
 const indexRouter = require('./routes/index');
@@ -37,9 +37,39 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'));
+
+
+
+app.use(flash());
+
+app.use(session({
+  resave: true,
+  saveUninitialized : true,
+  secret: process.env.SESSION_SECRET,
+  store: new MongoStore({
+    url: process.env.MONGODB_URI,
+    autoReconnect: true,
+    cookie: {maxAge: 6000}
+
+  })
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+app.use((req, res, next)=>{
+  res.locals.user =req.user;
+  res.locals.errors = req.flash('error');
+  res.locals.message = req.flash('message');
+  res.locals.success = req.flash('success');
+
+  next();
+})
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
