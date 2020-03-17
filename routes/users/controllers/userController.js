@@ -2,6 +2,8 @@ const User = require('../models/User');
 const{validationResult} = require('express-validator')
 const faker = require('faker');
 const bcrypt = require('bcryptjs')
+const flash = require('connect-flash')
+
 
 module.exports = {
 register: (req, res, next)=>{
@@ -28,8 +30,8 @@ register: (req, res, next)=>{
             return res.status(400).json({confirmation: false, message: err})
             }
             else{
-            // return res.redirect('/');
-                next();
+            return res.redirect('/');
+                // next();
             }
     })
  })
