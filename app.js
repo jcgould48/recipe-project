@@ -15,7 +15,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users/userRoutes');
 const adminRouter = require('./routes/admin/adminRoutes');
 
-
+const getAllCategories = require('./routes/admin/middleware/getAllCategories');
 const app = express();
 
 
@@ -42,7 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
 
-
+app.use(getAllCategories);
 app.use(flash());
 
 app.use(session({

@@ -21,11 +21,13 @@ module.exports = {
         category.save().then(category=>{
             // console.log(category);
             // return res.json({category})
-            return res.redirect(`/api/admin/add-products/${category.name}`);
+            // return res.redirect(`/api/admin/add-products/${category.name}`);
+            req.flash('success', 'New category created');//NOT WORKING
+            return res.redirect(`/api/admin/add-category`);
         })
         .catch(err=>{
             if(err.code === 11000){
-                req.flash('error', 'Category already exist');
+                req.flash('error', 'Category already exists');
                 // return res.redirect('/add-category')
                 // return res.json({message: 'Exists'})
                 return res.redirect('/api/admin/add-category');

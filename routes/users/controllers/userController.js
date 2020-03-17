@@ -14,8 +14,8 @@ register: (req, res, next)=>{
     const {name, email, password} = req.body;
     User.findOne({email})
     .then((user)=>{
-        if (user) return req.flash('errors', 'User Already Exists')
-    //  if (user) return console.log('User Exists')
+        // if (user) return req.flash('errors', 'User Already Exists')
+     if (user) return console.log('User Exists')
      else{
     const newUser = new User();
 
@@ -47,7 +47,6 @@ updateProfile: (params, id) => {
     return new Promise((resolve, reject) => {
       User.findById(id)
         .then(user => {
-          console.log('hello');
           if (name) user.profile.name = name;
           if (email) user.email = email;
           if (address) user.address = address;

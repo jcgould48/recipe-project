@@ -9,6 +9,4 @@ router.post('/add-category',categoryValidation, createCategory)
 
 
 
-
-
 module.exports = router;

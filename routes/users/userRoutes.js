@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/register', function(req, res, next){
-  res.render('auth/register', {errors: req.flash('errors')})
+ return res.render('auth/register', {errors: req.flash('errors')})
 })
 
 router.post('/register', userValidation, register);
