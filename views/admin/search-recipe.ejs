@@ -39,13 +39,13 @@
           <br />
           <hr class="colorgraph" />
           <br />
-          <form role="form" method="POST" action="/api/admin/search-recipe">
+          <form role="form" method="GET" action="/api/admin/search">
             <fieldset>
               <div class="form-group">
                 <input
                   type="text"
-                  name="name"
-                  id="recipe"
+                  name="ingredient"
+                  id="ingredient"
                   class="form-control input-lg"
                   placeholder="Search Recipe"
                 />
@@ -53,10 +53,10 @@
               <br />
               <hr class="colorgraph" />
               <div class="row">
-                <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="">
                   <input
                     type="submit"
-                    class="btn btn-lg btn-success btn-block"
+                    class=""
                     value="Search"
                   />
                 </div>

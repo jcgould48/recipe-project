@@ -42,6 +42,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 app.use(getAllCategories);
 app.use(flash());
 

@@ -9,6 +9,8 @@ router.post('/add-category',categoryValidation, createCategory)
 
 router.get('/search-recipe', getSearchRecipe, recipeAPISearch)
 
+router.get('/search', recipeAPISearch);
+
 
 
 
