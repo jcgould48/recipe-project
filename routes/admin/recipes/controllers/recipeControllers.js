@@ -1,28 +1,34 @@
-const User = require('../users/models/User');
 const { validationResult } = require('express-validator');
 const fetch = require('node-fetch')
-require('dotenv').config()
-require('../../lib/Passport')
+// require('dotenv').config()
+
 
 module.exports ={
 
-recipeSearch:(req,res)=>{
+getSearchRecipe: (req, res, next)=>{
+        // return res.json({categories});
+        return res.render('admin/search-recipe')
+    },
 
+recipeAPISearch:(req,res)=>{
+    
         if(req.isAuthenticated()) {
           // return res.render('error')
           
-          cityName = req.query
-          const apiKey = `&appid=${process.env.KEY}`
-          const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName.cityName}${apiKey}&units=imperial`;
+          searchItem = req.query
+          const apiKey = `=${process.env.API_KEY}`
+          const url = `https://api.spoonacular.com/recipes/search?${apiKey}&query=${searchItem}&number=1`;
           ;
           fetch(url)
-          .then((weather) => weather.json())
-          .then((weather) => {
-            console.log(weather)
-            console.log(apiKey)
-            console.log(cityName.cityName)
-             
-            return res.render('weather',{weather})
+          .then((recipe) => recipe.json())
+          .then((recipe) => {
+
+       
+            // console.log(recipe)
+            // console.log(apiKey)
+            // console.log(searchItem.searchItem)
+            //  return res.json({recipe})
+            return res.render('main/found-recipe',{recipe})
           })
           .catch((err) => console.log(err))
          }

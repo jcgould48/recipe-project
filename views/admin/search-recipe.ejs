@@ -9,10 +9,7 @@
     <% include ../partials/nav %>
     <div class="container">
       <div class="row">
-        <div
-          class="
-          col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3 my-form"
-        >
+        <div>
           <% if (errors.length > 0) { %>
           <div class="alert alert-danger alert-dismissible">
             <button
@@ -42,15 +39,15 @@
           <br />
           <hr class="colorgraph" />
           <br />
-          <form role="form" method="POST" action="/api/admin/add-category">
+          <form role="form" method="POST" action="/api/admin/search-recipe">
             <fieldset>
               <div class="form-group">
                 <input
                   type="text"
                   name="name"
-                  id="category"
+                  id="recipe"
                   class="form-control input-lg"
-                  placeholder="Add Category"
+                  placeholder="Search Recipe"
                 />
               </div>
               <br />
@@ -60,7 +57,7 @@
                   <input
                     type="submit"
                     class="btn btn-lg btn-success btn-block"
-                    value="Add"
+                    value="Search"
                   />
                 </div>
               </div>
