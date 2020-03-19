@@ -10,6 +10,10 @@ getSearchRecipe: (req, res, next)=>{
         return res.render('main/search-recipe')
     },
 
+    // listRecipe : (req, res, next)=>{
+    //     return res.render('main/list-recipes')
+    //   },
+
 recipeAPISearch:(req,res)=>{
     
         if(req.isAuthenticated()) {
@@ -17,23 +21,15 @@ recipeAPISearch:(req,res)=>{
 
           searchItem = req.query.ingredient
           console.log('search' , searchItem)
-          
-
           const apiKey = `apiKey=${process.env.API_KEY}`
-          const url = `https://api.spoonacular.com/recipes/search?${apiKey}&query=${searchItem}&number=2`;
+          const url = `https://api.spoonacular.com/recipes/search?${apiKey}&query=${searchItem}&number=3`;
           ;
           fetch(url)
           .then((recipe) => recipe.json())
           .then((recipe) => {
 
-            // const {results: [id, title]} = recipe
-
-            // console.log(recipe.results)
-            
-            // console.log(searchItem.name)
-            // console.log(results[1].title)
-             return res.json({recipe})
-            // return res.render('main/found-recipe',{recipe})
+            //  return res.json({recipe})
+            return res.render('main/list-recipes', {recipe})
           })
           .catch((err) => console.log(err))
          }
@@ -42,5 +38,7 @@ recipeAPISearch:(req,res)=>{
         // }
           
       },
+
+    
 
 }

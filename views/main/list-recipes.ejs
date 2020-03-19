@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ../partials/head %> 
+    
+    <title>List of Recipes</title>
+    
+  </head>
+  <body>
+    <% include ../partials/nav %> 
+    <div id="container" class="fluid">
+      <a href="/auth/logout">logout</a>
+      <main role="main">
+        <% include ../partials/jumbotron %> 
+        <div class="container">
+          <div class="row">
+          </div>
+        <div class="row">
+            <p>
+                <% recipe.forEach(({results}) =>{%>
+                    <div class="col-md-4" style="width:20rem;">
+                      <div class="card">
+                        <img
+                        src="<%= image %> "
+                        class="card-img-top"
+                        alt="..."
+                        />
+                        <div class="card-body">
+                          <h5 class="card-title"><%= title %> </h5>
+                          <p class="card-text">
+                            <%= description %> 
+                          </p>
+                        </div>
+                      </div>
+                    </div>   
+                    <%})%> 
+
+
+
+                
+                <%=recipe.results[1].title%> 
+                <%=recipe.results[1].servings%> 
+            </p>
+        
+        </main>
+      </div>
+  <% include ../partials/footer %> 
+<% include ../partials/scripts %> 
+  </body>
+</html>
+
+
+
