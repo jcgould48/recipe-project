@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const findRecipeID = document.getElementById('recipeID');
+
 
 const {getSearchRecipe, recipeAPISearch} = require('./controllers/recipeControllers')
 
@@ -8,15 +8,15 @@ router.get('/search', recipeAPISearch);
 
 
 router.get('/single-recipe/:id', (req, res, next)=>{
+
+    recipe.findById({req.params.id}, (err, product)=>{
+        if(err) return next(err);
         res.render('main/single-recipe', {recipe})
+    })
+        
 })
 
-findRecipeID.addEventListener('click', () => {
-let recipeId = ''
-recipeID= recipe.results[i].id
 
-    
-})
 
 
 
