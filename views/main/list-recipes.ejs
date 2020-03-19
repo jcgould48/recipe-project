@@ -17,37 +17,18 @@
           </div>
         <div class="row">
             <p>
-                <% recipe.results.forEach(({title, readyInMinutes, servings, image}) =>{%>
-                    <div class="col-md-4" style="width:20rem;">
-                        <div class="card">
-                          <img
-                          src="https://spoonacular.com/recipeImages/<%= image %>"
-                          class="card-img-top"
-                          alt="..."
-                          />
-                          <div class="card-body">
-                            <h5 class="card-title"><%= title %> </h5>
-                            <p class="card-text">
-                              Servings: <%= servings %> </br>
-                              Ready in Minutes: <%= readyInMinutes %> 
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+                <% recipe.results.forEach(({title, readyInMinutes, servings, image, id}) =>{%>
                       <div class="col-md-4" style="margin-bottom:30px;">
-                        <div class="card" style= "border-radius:0">
-                        <a href="/api/products/single-product/<%= products[i]._id %>">
+                        <div class="card" id="recipeID style= "border-radius:0">
+                        <a href="/api/main/single-recipe/<%= id %>">
                         <img src="https://spoonacular.com/recipeImages/<%= image %>" alt = "..." class="card-img-top"/>
                         <div class="card-body">
-                            <h5 class="card-title"><%= products[i].name %> </h5>
+                            <h5 class="card-title"><%= title %> </h5>
                             <p class="card-text">
-                                Category: <%= products[i].category.name %> 
+                                Servings: <%= servings %> </br>
+                                Ready in Minutes: <%= readyInMinutes %> 
                             </p>
-                            <p class="card-text">
-                                <%= products[i].price %> 
-                            </p>
-                            <br/>
-                            <a href="/api/products/single-product/<%= products[i]._id %>" 
+                            <a href="/api/main/single-recipe/<%= id %>" 
                                 class="btn btn-success">
                             Add Recipe</a>
                                 </div> 
