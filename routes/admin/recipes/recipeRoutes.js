@@ -1,17 +1,14 @@
 const router = require('express').Router();
 
 
-const {getSearchRecipe, recipeAPISearch} = require('./controllers/recipeControllers')
+const {getSearchRecipe, recipeAPISearch, getSingleRecipe} = require('./controllers/recipeControllers')
 
 router.get('/search-recipe', getSearchRecipe)
 router.get('/search', recipeAPISearch);
+router.get('/single-recipe', getSingleRecipe);
 
 
-router.get('/single-recipe/', (req, res, next) =>{
 
-       return res.render('main/single-recipe')
-        
-})
 
 
 

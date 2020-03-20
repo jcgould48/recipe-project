@@ -17,25 +17,9 @@
           </div>
         <div class="row">
             <p>
-                <% recipe.results.forEach(({title, readyInMinutes, servings, image, id}) =>{%>
-                      <div class="col-md-4" style="margin-bottom:30px;">
-                        <div class="card"  style= "border-radius:0">
-                        <a href="/api/main/single-recipe/<%= id %>">
-                        <img  src="https://spoonacular.com/recipeImages/<%= image %>" alt = "..." class="card-img-top"/>
-                        <div class="card-body">
-                            <h5 class="card-title"><%= title %> </h5>
-                            <p class="card-text">
-                                Servings: <%= servings %> </br>
-                                Ready in Minutes: <%= readyInMinutes %> 
-                            </p>
-                            <a href="/api/main/single-recipe/<%= id %>" 
-                                class="btn btn-success" >
-                            Add Recipe</a>
-                                </div> 
-                                 </a>
-                            </div>
-                        </div> 
-                    <%})%> 
+               <h1><%= recipe.title %> </h1> 
+               <img src="<%= recipe.image %>"/>
+               <p><%= recipe.summary %> </p>
             </p>
         </main>
       </div>

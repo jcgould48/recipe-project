@@ -59,13 +59,13 @@ recipeAPISearch:(req,res)=>{
         if(req.isAuthenticated()) {
 
             const apiKey = `apiKey=${process.env.API_KEY}`
-            const url = `https://https://api.spoonacular.com/recipes/146963/information?${apiKey}`;
+            const url = `https://api.spoonacular.com/recipes/146963/information?${apiKey}`;
             ;
             fetch(url)
             .then((recipe) => recipe.json())
             .then((recipe) => {
   
-              //  return res.json({recipe})
+            //    return res.json({recipe})
               return res.render('main/single-recipe', {recipe})
             })
             .catch((err) => console.log(err))

@@ -15,3 +15,6 @@
                           </div>
                         </div>
                       </div>
+https://https//api.spoonacular.com/recipes/146963/information apiKey=e73139bc27624482a42dbd0895ddeed6
+
+https://api.spoonacular.com/recipes/146963/information?apiKey=e73139bc27624482a42dbd0895ddeed6
