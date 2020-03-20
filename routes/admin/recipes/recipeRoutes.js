@@ -7,12 +7,9 @@ router.get('/search-recipe', getSearchRecipe)
 router.get('/search', recipeAPISearch);
 
 
-router.get('/single-recipe/:id', (req, res, next)=>{
+router.get('/single-recipe/', (req, res, next) =>{
 
-    recipe.findById({req.params.id}, (err, product)=>{
-        if(err) return next(err);
-        res.render('main/single-recipe', {recipe})
-    })
+       return res.render('main/single-recipe')
         
 })
 

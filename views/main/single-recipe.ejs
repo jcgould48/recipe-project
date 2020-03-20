@@ -1,11 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Project for Colin</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-        <h1>test</h1>
-    </body>
+  <head>
+    <% include ../partials/head %> 
+    
+    <title>Single Recipe</title>
+    
+  </head>
+  <body>
+    <% include ../partials/nav %> 
+    <div id="container" class="fluid">
+      <a href="/auth/logout">logout</a>
+      <main role="main">
+        <% include ../partials/jumbotron %> 
+        <div class="container">
+          <div class="row">
+          </div>
+        <div class="row">
+            <p>
+                <% recipe.results.forEach(({title, readyInMinutes, servings, image, id}) =>{%>
+                      <div class="col-md-4" style="margin-bottom:30px;">
+                        <div class="card"  style= "border-radius:0">
+                        <a href="/api/main/single-recipe/<%= id %>">
+                        <img  src="https://spoonacular.com/recipeImages/<%= image %>" alt = "..." class="card-img-top"/>
+                        <div class="card-body">
+                            <h5 class="card-title"><%= title %> </h5>
+                            <p class="card-text">
+                                Servings: <%= servings %> </br>
+                                Ready in Minutes: <%= readyInMinutes %> 
+                            </p>
+                            <a href="/api/main/single-recipe/<%= id %>" 
+                                class="btn btn-success" >
+                            Add Recipe</a>
+                                </div> 
+                                 </a>
+                            </div>
+                        </div> 
+                    <%})%> 
+            </p>
+        </main>
+      </div>
+  <% include ../partials/footer %> 
+<% include ../partials/scripts %> 
+  </body>
 </html>
+
+
+

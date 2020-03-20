@@ -18,6 +18,7 @@ const recipeRouter = require('./routes/admin/recipes/recipeRoutes');
 
 
 const getAllCategories = require('./routes/admin/middleware/getAllCategories');
+
 const app = express();
 
 
@@ -48,6 +49,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(getAllCategories);
+
 app.use(flash());
 
 app.use(session({
