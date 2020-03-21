@@ -7,7 +7,11 @@ const {getSearchRecipe, recipeAPISearch, getSingleRecipe} = require('./controlle
 
 router.get('/search-recipe', getSearchRecipe)
 router.get('/search', recipeAPISearch);
-router.get('/single-recipe', getSingleRecipe);
+router.get('/single-recipe/:id', (req, res, next)=>{
+    let id = req.params.id
+    console.log('routeid....',id)
+    getSingleRecipe(req, res, id)
+});
 
 router.post('/single-recipe', (req, res, next)=>{
     const apiKey = `apiKey=${process.env.API_KEY}`
