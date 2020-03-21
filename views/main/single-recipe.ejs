@@ -21,6 +21,32 @@
                <img src="<%= recipe.image %>"/>
                <p><%= recipe.summary %> </p>
             </p>
+            <div>
+            <form method="post" action="/api/main/single-recipe"   aria-label="...">
+                <button type="submit" class="btn btn-primary btn-lg">
+                    Save Recipe
+                  </button>
+            </form>
+        </div>
+        <div> 
+            <li style="margin-left:20px;" class="nav-item dropdown">
+            <a
+              style="color:black;"
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="dropdown01"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              >Categories</a
+            >
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <ul>
+                    <% for( let i = 0; i < categories.length; i++ ) { %>
+                    <li style="list-style:none">
+                      <%= categories[i].name %> </a>
+                    </li>
+                    <% } %> </div>
         </main>
       </div>
   <% include ../partials/footer %> 

@@ -72,6 +72,31 @@ recipeAPISearch:(req,res)=>{
            }
             
         },
+
+    //     saveRecipe: (req, res, next)=>{
+           
+    //         const apiKey = `apiKey=${process.env.API_KEY}`
+    //         const url = `https://api.spoonacular.com/recipes/146963/information?${apiKey}`;
+    //         ;
+    //         fetch(url)
+    //         .then((recipe) => recipe.json())
+    //         .then((recipe) => {
+           
+    //         const newRecipe = new Recipe();
+
+    //         // newRecipe.category = req.body.category;
+    //         newRecipe.title = recipe.title;
+    //         newRecipe.image = recipe.image;
+    //         newRecipe.description = recipe.description;
+    //         newRecipe.readyInMinutes = recipe.readyInMinutes;
+    //         newRecipe.servingSize = recipe.servingSize;
+        
+    //         newRecipe.save().then(recipe => {
+    //             req.flash('message', 'Recipe saved!')
+    //             return res.redirect('/api/main/search-recipe')
+    //     })
+    // })
+    //     },
     
 
 }
