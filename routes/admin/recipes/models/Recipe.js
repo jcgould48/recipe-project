@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
+const Schema = mongoose.Schema;
 
-const RecipeSchema = new mongoose.Schema({
+const RecipeSchema = new Schema({
 category:{type:Schema.Types.ObjectId, ref: 'Category'},
 title:{type:String, unique: true, default: '', lowercase: true, trim: true},
 image:{type:String, default: '', lowercase: true, trim: true},

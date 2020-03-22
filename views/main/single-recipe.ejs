@@ -26,28 +26,29 @@
                 <button type="submit" class="btn btn-primary btn-lg">
                     Save Recipe
                   </button>
-            </form>
         </div>
         <div> 
-            <li style="margin-left:20px;" class="nav-item dropdown">
-            <a
+            <li style="margin-left:20px;" class="dropdown">
+            <input
+            type="text"
               style="color:black;"
-              class="nav-link dropdown-toggle"
-              href="#"
+              class="dropdown-toggle"
               id="category"
+              name="category"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-              >Categories</a
+              >Categories</input
             >
             <div class="dropdown-menu" aria-labelledby="dropdown01">
               <ul>
                     <% for( let i = 0; i < categories.length; i++ ) { %>
                     <li style="list-style:none">
-                        <a href="/api/products/all-products/<%= categories[i]._id%>"
+                        <a
                             style="text-decoration:none;"> <%= categories[i].name %> </a>
                     </li>
                     <% } %> </div>
+                </form>
         </main>
       </div>
   <% include ../partials/footer %> 

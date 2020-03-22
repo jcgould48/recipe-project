@@ -1,7 +1,9 @@
+const async = require('async')
 const { validationResult } = require('express-validator');
 const fetch = require('node-fetch')
 const Recipe = require('../models/Recipe')
 const flash = require('connect-flash')
+const Category = require('../../categories/models/Category')
 
 
 module.exports ={
@@ -76,9 +78,11 @@ recipeAPISearch:(req,res)=>{
         },
 
     saveRecipe: (req, res, next)=>{
+       console.log('form',req.body.name)
         async.waterfall([
             (callback)=> {
-                Category.findOne({name:req.params.name}, (err, category)=>{
+
+                Category.findOne({name:req.body.name}, (err, category)=>{
                     if(err) return next(err)
                     console.log('Waterfall category...', category);
                     callback(null, category);
@@ -102,9 +106,9 @@ recipeAPISearch:(req,res)=>{
             newRecipe.servings = recipe.servings;
         
             newRecipe.save()
-        })
+        }).catch((err) => console.log(err))
     }
-    ])
+    ]).catch((err) => console.log(err))
             // .then(recipe => {
                 req.flash('success', 'Recipe saved!')
                 return res.redirect('/api/main/search-recipe')
