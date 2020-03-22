@@ -1,6 +1,7 @@
 const { validationResult } = require('express-validator');
 const fetch = require('node-fetch')
-// require('dotenv').config()
+const Recipe = require('../models/Recipe')
+const flash = require('connect-flash')
 
 
 module.exports ={
@@ -74,30 +75,29 @@ recipeAPISearch:(req,res)=>{
             
         },
 
-    //     saveRecipe: (req, res, next)=>{
-           
-    //         const apiKey = `apiKey=${process.env.API_KEY}`
-    //         const url = `https://api.spoonacular.com/recipes/146963/information?${apiKey}`;
-    //         ;
-    //         fetch(url)
-    //         .then((recipe) => recipe.json())
-    //         .then((recipe) => {
-           
-    //         const newRecipe = new Recipe();
-
-    //         // newRecipe.category = req.body.category;
-    //         newRecipe.title = recipe.title;
-    //         newRecipe.image = recipe.image;
-    //         newRecipe.description = recipe.description;
-    //         newRecipe.readyInMinutes = recipe.readyInMinutes;
-    //         newRecipe.servingSize = recipe.servingSize;
-        
-    //         newRecipe.save().then(recipe => {
-    //             req.flash('message', 'Recipe saved!')
-    //             return res.redirect('/api/main/search-recipe')
-    //     })
-    // })
-    //     },
+    saveRecipe: (req, res, next)=>{
+    let id = req.params.id
+    const apiKey = `apiKey=${process.env.API_KEY}`
+    const url = `https://api.spoonacular.com/recipes/${id}/information?${apiKey}`;
+            
+            fetch(url)
+            .then((recipe) => recipe.json())
+            .then((recipe) => {
     
-
+    const newRecipe = new Recipe();
+            // newRecipe.category = req.body.category;
+            newRecipe.title = recipe.title;
+            newRecipe.image = recipe.image;
+            newRecipe.description = recipe.description;
+            newRecipe.readyInMinutes = recipe.readyInMinutes;
+            newRecipe.servings = recipe.servings;
+        
+            newRecipe.save()
+            .then(recipe => {
+                req.flash('message', 'Recipe saved!')
+                return res.redirect('/api/main/search-recipe')
+        }).catch((err) => console.log(err))
+    }) 
+},   
+   
 }

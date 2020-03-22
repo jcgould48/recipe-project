@@ -22,7 +22,7 @@
                <p><%= recipe.summary %> </p>
             </p>
             <div>
-            <form method="post" action="/api/main/single-recipe"   aria-label="...">
+            <form method="post" action="/api/main/single-recipe/<%= recipe.id %> "   aria-label="...">
                 <button type="submit" class="btn btn-primary btn-lg">
                     Save Recipe
                   </button>
