@@ -76,6 +76,15 @@ recipeAPISearch:(req,res)=>{
         },
 
     saveRecipe: (req, res, next)=>{
+        async.waterfall([
+            (callback)=> {
+                Category.findOne({name:req.params.name}, (err, category)=>{
+                    if(err) return next(err)
+                    console.log('Waterfall category...', category);
+                    callback(null, category);
+                })
+            },
+    (category, callback)=>{
     let id = req.params.id
     const apiKey = `apiKey=${process.env.API_KEY}`
     const url = `https://api.spoonacular.com/recipes/${id}/information?${apiKey}`;
@@ -85,7 +94,7 @@ recipeAPISearch:(req,res)=>{
             .then((recipe) => {
     
     const newRecipe = new Recipe();
-            // newRecipe.category = req.body.category;
+            newRecipe.category = category._id;
             newRecipe.title = recipe.title;
             newRecipe.image = recipe.image;
             newRecipe.description = recipe.description;
@@ -93,11 +102,14 @@ recipeAPISearch:(req,res)=>{
             newRecipe.servings = recipe.servings;
         
             newRecipe.save()
-            .then(recipe => {
-                req.flash('message', 'Recipe saved!')
+        })
+    }
+    ])
+            // .then(recipe => {
+                req.flash('success', 'Recipe saved!')
                 return res.redirect('/api/main/search-recipe')
-        }).catch((err) => console.log(err))
-    }) 
+        // }).catch((err) => console.log(err))
+    // }) 
 },   
    
 }
