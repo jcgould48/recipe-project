@@ -78,11 +78,12 @@ recipeAPISearch:(req,res)=>{
         },
 
     saveRecipe: (req, res, next)=>{
-       console.log('form',req.body.name)
+       console.log('form',req.body.category)
+       console.log('form',req.query.category)
         async.waterfall([
             (callback)=> {
 
-                Category.findOne({name:req.body.name}, (err, category)=>{
+                Category.findOne({name:req.body.category}, (err, category)=>{
                     if(err) return next(err)
                     console.log('Waterfall category...', category);
                     callback(null, category);
