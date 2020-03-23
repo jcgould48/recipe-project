@@ -110,11 +110,25 @@ recipeAPISearch:(req,res)=>{
         }).catch((err) => console.log(err))
     }
     ]).catch((err) => console.log(err))
-            // .then(recipe => {
+            
                 req.flash('success', 'Recipe saved!')
                 return res.redirect('/api/main/search-recipe')
-        // }).catch((err) => console.log(err))
-    // }) 
+       
 },   
+
+deleteRecipe : (req, res, id)=>{
+    const recipeExists = recipes.filter(recipe => recipe.id === req.params.id);
+    const recipe = recipeExists[0];
+  
+    if(recipeExists.length !==0){
+      const deletedRecipe = recipes.indexOf(recipe);
+      recipes.splice(deletedRecipe, 1);
+      return res.status(200).json({message: 'Recipe Deleted'})
+    } else {
+      return res.status(400)
+      .json({message: `Recipe not in database.`})
+    }
+  },
+
    
 }

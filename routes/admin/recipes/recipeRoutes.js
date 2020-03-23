@@ -29,8 +29,10 @@ router.get('/category-recipes/:id', (req, res, next)=>{
     })
 })
 
-
-
+router.delete('/single-recipe/:id', (req, res, next)=>{
+    let id = req.params.id
+    deleteRecipe(req, res, id)
+})
 
 
 
