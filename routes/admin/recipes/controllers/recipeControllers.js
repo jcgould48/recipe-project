@@ -70,6 +70,7 @@ recipeAPISearch:(req,res)=>{
             .then((recipe) => {
                    
             //    return res.json({recipe})
+            res.locals.recipe = recipe
               return res.render('main/single-recipe', {recipe})
             })
             .catch((err) => console.log(err))
@@ -106,7 +107,7 @@ recipeAPISearch:(req,res)=>{
             newRecipe.readyInMinutes = recipe.readyInMinutes;
             newRecipe.servings = recipe.servings;
         
-            newRecipe.save()
+            newRecipe.save().catch(err=>console.log('saveerr..', err))
         }).catch((err) => console.log(err))
     }
     ]).catch((err) => console.log(err))
@@ -116,19 +117,28 @@ recipeAPISearch:(req,res)=>{
        
 },   
 
-deleteRecipe : (req, res, id)=>{
-    const recipeExists = recipes.filter(recipe => recipe.id === req.params.id);
-    const recipe = recipeExists[0];
+// deleteRecipe : (req, res, id)=>{
+    
+//     Recipe.findOne({id})
+//     .then((recipe)=>{
+//         if (!recipe) return req.flash('errors', 'Recipe not in database')
+//         else{
+//     const recipeExists = recipe.filter(recipe => recipe.id === id);
+//     const recipe = recipeExists[0];
+
+//     console.log('recipe exist', recipeExists)
+//     console.log('recipe.id',recipe.id)
+//     console.log('id',recipe.id)
   
-    if(recipeExists.length !==0){
-      const deletedRecipe = recipes.indexOf(recipe);
-      recipes.splice(deletedRecipe, 1);
-      return res.status(200).json({message: 'Recipe Deleted'})
-    } else {
-      return res.status(400)
-      .json({message: `Recipe not in database.`})
-    }
-  },
+//     if(recipeExists.length !==0){
+//       const deletedRecipe = recipes.indexOf(recipe);
+//       recipes.splice(deletedRecipe, 1);
+//       return res.status(200).json({message: 'Recipe Deleted'})
+//     } else {
+//       return res.status(400)
+//       .json({message: `Recipe not in database.`})
+//     }
+//   },
 
    
 }

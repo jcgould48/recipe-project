@@ -49,6 +49,11 @@
                     </li>
                     <% } %> </div>
                 </form>
+                <form role="form" method="POST" action="/api/main/single-recipe/<%= recipe.id %>?_method=DELETE">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        Delete Recipe
+                      </button>
+                </form>
         </main>
       </div>
   <% include ../partials/footer %> 

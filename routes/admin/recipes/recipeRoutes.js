@@ -3,7 +3,7 @@ const express = require('express')
 const Recipe = require('./models/Recipe')
 
 
-const {getSearchRecipe, recipeAPISearch, getSingleRecipe, saveRecipe} = require('./controllers/recipeControllers')
+const {getSearchRecipe, recipeAPISearch, getSingleRecipe, saveRecipe, deleteRecipe} = require('./controllers/recipeControllers')
 
 router.get('/search-recipe', getSearchRecipe)
 router.get('/search', recipeAPISearch);
@@ -14,7 +14,9 @@ router.get('/single-recipe/:id', (req, res, next)=>{
 });
 
 router.post('/single-recipe/:id', (req, res, next)=>{
+    console.log('body...', req.recipe)
     let id = req.params.id
+    console.log('id...',req.params.id)
     saveRecipe(req, res, id)
 })
 
