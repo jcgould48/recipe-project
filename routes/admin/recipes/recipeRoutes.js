@@ -13,10 +13,10 @@ router.get('/single-recipe/:id', (req, res, next)=>{
     getSingleRecipe(req, res, id)
 });
 
-router.post('/single-recipe/:id', (req, res, next)=>{
-    console.log('body...', req.recipe)
+router.post('/single-recipe/category', (req, res, next)=>{
+
     let id = req.params.id
-    console.log('id...',req.params.id)
+
     saveRecipe(req, res, id)
 })
 

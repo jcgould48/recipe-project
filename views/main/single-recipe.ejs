@@ -22,32 +22,52 @@
                <p><%= recipe.summary %> </p>
             </p>
             <div>
-            <form method="post" action="/api/main/single-recipe/<%= recipe.id %> "   aria-label="...">
+            <form method="post" action="/api/main/single-recipe/category"   aria-label="...">
+                <input
+                type="hidden"
+                name="title"
+                id="title"
+                value="<%=recipe.title%>"
+              />
+              <input
+                type="hidden"
+                name="image"
+                id="image"
+                value="<%=recipe.image%>"
+              />
+              <input
+                type="hidden"
+                name="summary"
+                id="summary"
+                value="<%=recipe.summary%>"
+              />
+              <input
+              type="hidden"
+              name="readyInMinutes"
+              id="readyInMinutes"
+              value="<%=recipe.readyInMinutes%>"
+            />
+            <input
+              type="hidden"
+              name="servings"
+              id="servings"
+              value="<%=recipe.servings%>"
+            />
+              <input
+              type="hidden"
+              name="summary"
+              id="summary"
+              value="<%=recipe.id%>"
+            />
+              <input
+                type="text"
+                name="category"
+                id="category"
+              />
+                
                 <button type="submit" class="btn btn-primary btn-lg">
                     Save Recipe
                   </button>
-        </div>
-        <div> 
-            <li style="margin-left:20px;" class="dropdown">
-            <input
-            type="text"
-              style="color:black;"
-              class="dropdown-toggle"
-              id="category"
-              name="category"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              >Categories</input
-            >
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <ul>
-                    <% for( let i = 0; i < categories.length; i++ ) { %>
-                    <li style="list-style:none">
-                        <a
-                            style="text-decoration:none;"> <%= categories[i].name %> </a>
-                    </li>
-                    <% } %> </div>
                 </form>
                 <form role="form" method="POST" action="/api/main/single-recipe/<%= recipe.id %>?_method=DELETE">
                     <button type="submit" class="btn btn-primary btn-lg">
