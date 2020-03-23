@@ -34,7 +34,7 @@
             <ul>
                   <% for( let i = 0; i < categories.length; i++ ) { %>
                   <li style="list-style:none">
-                    <a href="#"
+                    <a href="/api/main/category-recipes/<%= categories[i]._id%>"
                       style="text-decoration:none;"> <%= categories[i].name %> </a>
                   </li>
                   <% } %> 

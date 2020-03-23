@@ -18,30 +18,16 @@ router.post('/single-recipe/:id', (req, res, next)=>{
     saveRecipe(req, res, id)
 })
 
-// (req, res, next)=>{
-//     let id = req.params.id
-//     const apiKey = `apiKey=${process.env.API_KEY}`
-//     const url = `https://api.spoonacular.com/recipes/${id}/information?${apiKey}`;
-            
-//             fetch(url)
-//             .then((recipe) => recipe.json())
-//             .then((recipe) => {
+router.get('/category-recipes/:id', (req, res, next)=>{
+    Recipe.find({category: req.params.id})
+    .populate('category') 
     
-//     const newRecipe = new Recipe();
-//             // newRecipe.category = req.body.category;
-//             newRecipe.title = recipe.title;
-//             newRecipe.image = recipe.image;
-//             newRecipe.description = recipe.description;
-//             newRecipe.readyInMinutes = recipe.readyInMinutes;
-//             newRecipe.servings = recipe.servings;
-        
-//             newRecipe.save()
-//             .then(recipe => {
-//               return  req.flash('message', 'Recipe saved!')
-//                 // return res.redirect('/api/main/search-recipe')
-//         }).catch((err) => console.log(err))
-//     })    
-// })
+    .exec((err, recipes)=>{
+        if(err) return next(err)
+        // return res.json({recipes});
+        return res.render('main/category-recipes',{recipes})
+    })
+})
 
 
 

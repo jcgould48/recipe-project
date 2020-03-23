@@ -78,8 +78,7 @@ recipeAPISearch:(req,res)=>{
         },
 
     saveRecipe: (req, res, next)=>{
-       console.log('form',req.body.category)
-       console.log('form',req.query.category)
+       
         async.waterfall([
             (callback)=> {
 
@@ -100,6 +99,7 @@ recipeAPISearch:(req,res)=>{
     
     const newRecipe = new Recipe();
             newRecipe.category = category._id;
+            newRecipe.apiID = recipe.id;
             newRecipe.title = recipe.title;
             newRecipe.image = recipe.image;
             newRecipe.description = recipe.description;
