@@ -44,7 +44,7 @@ recipeAPISearch:(req,res)=>{
           searchItem = req.query.ingredient
           console.log('search' , searchItem)
           const apiKey = `apiKey=${process.env.API_KEY}`
-          const url = `https://api.spoonacular.com/recipes/search?${apiKey}&query=${searchItem}&number=3`;
+          const url = `https://api.spoonacular.com/recipes/search?${apiKey}&query=${searchItem}&number=12`;
           ;
           fetch(url)
           .then((recipe) => recipe.json())

@@ -4,8 +4,14 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  text-decoration: none;
 }
  .spacer{
    background: white
  }
+ .card-img-top {
+  height: 300px;
+}
+.opening-card {
+  border-radius: 0;
+}

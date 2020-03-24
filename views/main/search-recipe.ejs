@@ -8,7 +8,10 @@
   <body>
     <% include ../partials/nav %>
     <div class="container">
-      
+      <div class="container search">
+        <div class="row">
+          <div class="col-sm-6 offset-sm-3 col-md-6 offset-md-3">
+            <hr class="colorgraph" />
           <h2>Search Recipe:</h2>
           <br />
           <hr class="colorgraph" />
@@ -24,21 +27,21 @@
                   placeholder="Search Recipe"
                 />
               </div>
-              <br />
               <hr class="colorgraph" />
               <div class="row">
-                <div class="">
+                <div class="col-xs-6 col-sm-6 col-md-6">
                   <input
                     type="submit"
-                    class=""
+                    class="btn btn-lg btn-primary btn-block"
                     value="Search"
                   />
-                </div>
-              </div>
+                  </div>
+                  </div>
             </fieldset>
           </form>
         </div>
       </div>
+    </div>
     </div>
     <% include ../partials/scripts %>
   </body>
