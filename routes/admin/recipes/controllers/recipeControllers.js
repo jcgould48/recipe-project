@@ -117,17 +117,17 @@ recipeAPISearch:(req,res)=>{
        
 },   
 
-// deleteRecipe : (req, res, id)=>{
-//     Recipe.findById(id)
-//     .then((recipe)=>{
-//         if (!recipe)  return res.status(400)
-//         .json({message: `Recipe not in database.`})
-//         else{
-//             recipe.remove(id)
-//       return res.status(200).json({message: 'Recipe Deleted'})
-//     } 
-// })
-//   },
+deleteRecipe : (req, res, id)=>{
+    Recipe.findOne({title})
+    .then((recipe)=>{
+        if (!recipe)  return res.status(400)
+        .json({message: `Recipe not in database.`})
+        else{
+            recipe.remove()
+      return res.status(200).json({message: 'Recipe Deleted'})
+    } 
+})
+  },
 
    
 }
