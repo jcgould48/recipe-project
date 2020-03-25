@@ -13,17 +13,17 @@ getSearchRecipe: (req, res, next)=>{
         return res.render('main/search-recipe')
     },
 
-    // listRecipe : (req, res, next)=>{
-    //     return res.render('main/list-recipes')
-    //   },
-
+getExtractRecipe: (req, res, next)=>{
+      // return res.json({categories});
+      return res.render('main/extract-recipe')
+  },
 
 recipeAPISearch:(req,res)=>{
     
         if(req.isAuthenticated()) {
 
           searchItem = req.query.ingredient
-          console.log('search' , searchItem)
+        
           const apiKey = `apiKey=${process.env.API_KEY}`
           const url = `https://api.spoonacular.com/recipes/search?${apiKey}&query=${searchItem}&number=12`;
           ;
@@ -33,6 +33,27 @@ recipeAPISearch:(req,res)=>{
 
             //  return res.json({recipe})
             return res.render('main/list-recipes', {recipe})
+          })
+          .catch((err) => console.log(err))
+         }
+          
+      },
+
+      recipeExtractor:(req,res)=>{
+    
+        if(req.isAuthenticated()) {
+
+          searchItem = req.query.website
+          
+          const apiKey = `apiKey=${process.env.API_KEY}`
+          const url = `https://api.spoonacular.com/recipes/extract?${apiKey}&url=${searchItem}`;
+          ;
+          fetch(url)
+          .then((recipe) => recipe.json())
+          .then((recipe) => {
+
+            //  return res.json({recipe})
+            return res.render('main/single-recipe', {recipe})
           })
           .catch((err) => console.log(err))
          }
@@ -77,7 +98,7 @@ recipeAPISearch:(req,res)=>{
             newRecipe.apiID = req.body.id;
             newRecipe.title = req.body.title;
             newRecipe.image = req.body.image;
-            newRecipe.description = req.body.description;
+            newRecipe.instructions = req.body.instructions;
             newRecipe.readyInMinutes = req.body.readyInMinutes;
             newRecipe.servings = req.body.servings;
         
