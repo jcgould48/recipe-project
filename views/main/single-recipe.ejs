@@ -27,8 +27,9 @@
                <p><b>Cooking Instructions: &nbsp; </b><%-recipe.instructions %> </p>
             </p>
             <div class="row">
+              <form method="post" action="#"   aria-label="...">
               <p>
-                  <% recipe.extendedIngredients.forEach(({name, amount,unit, image}) =>{%>
+                  <% recipe.extendedIngredients.forEach(({name, amount, unit, image}) =>{%>
                         <div class="col-md-4" style="margin-bottom:30px;">
                           <div class="card"  style= "border-radius:0">
                             <img  src="https://spoonacular.com/cdn/ingredients_100x100/<%= image %> " alt = "..." class="card-img-top"/>
@@ -42,8 +43,33 @@
                                   </div> 
                               </div>
                           </div> 
+                          <input
+                          type="hidden"
+                          name="name"
+                          id="name"
+                          value="<%=name%>"
+                        />
+                        <input
+                        type="hidden"
+                        name="amount"
+                        id="amount"
+                        value="<%=amount%>"
+                      />
+                      <input
+                      type="hidden"
+                      name="unit"
+                      id="unit"
+                      value="<%=unit%>"
+                    />
+                    <input
+                    type="hidden"
+                    name="image"
+                    id="image"
+                    value="<%=image%>"
+                  />
                       <%})%> 
               </p>
+            </form>
             <div>
             <form method="post" action="/api/main/single-recipe/category"   aria-label="...">
                 <input
