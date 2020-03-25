@@ -71,14 +71,7 @@ recipeAPISearch:(req,res)=>{
                 })
             },
     (category, callback)=>{
-    // let id = req.params.id
-    // const apiKey = `apiKey=${process.env.API_KEY}`
-    // const url = `https://api.spoonacular.com/recipes/${id}/information?${apiKey}`;
-            
-    //         fetch(url)
-    //         .then((recipe) => recipe.json())
-    //         .then((recipe) => {
-    
+  
     const newRecipe = new Recipe();
             newRecipe.category = category._id;
             newRecipe.apiID = req.body.id;
@@ -89,7 +82,6 @@ recipeAPISearch:(req,res)=>{
             newRecipe.servings = req.body.servings;
         
             newRecipe.save().catch(err=>console.log('saveerr..', err))
-        // }).catch((err) => console.log(err))
     }
     ]).catch((err) => console.log(err))
             
@@ -98,17 +90,18 @@ recipeAPISearch:(req,res)=>{
        
 },   
 
-// deleteRecipe : (req, res, id)=>{
-//     Recipe.findOne({title})
-//     .then((recipe)=>{
-//         if (!recipe)  return res.status(400)
-//         .json({message: `Recipe not in database.`})
-//         else{
-//             recipe.remove()
-//       return res.status(200).json({message: 'Recipe Deleted'})
-//     } 
-// })
-//   },
+deleteRecipe : (req, res, id)=>{
+  let apiID=id
+    Recipe.findOne({apiID})
+    .then((recipe)=>{
+        if (!recipe)  return res.status(400)
+        .json({message: `Recipe not in database.`})
+        else{
+            recipe.remove()
+      return res.status(200).json({message: 'Recipe Deleted'})
+    } 
+})
+  },
 
    
 }
