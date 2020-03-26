@@ -7,5 +7,4 @@ Readme
 
 delete user
 
-
-https://api.spoonacular.com/recipes/extract?apiKey=e73139bc27624482a42dbd0895ddeed6&url=https://foodista.com/recipe/ZHK4KPB6/chocolate-crinkle-cookies
+extract category image
