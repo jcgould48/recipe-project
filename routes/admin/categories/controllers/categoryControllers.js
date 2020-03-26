@@ -17,6 +17,7 @@ module.exports = {
             return res.redirect('/api/admin/add-category')
         }
         const category = new Category()
+        category.owner = req.user._id
         category.name = req.body.name;
         category.save().then(category=>{
             // console.log(category);

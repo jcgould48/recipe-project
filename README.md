@@ -8,3 +8,5 @@ Readme
 delete user
 
 extract category image
+
+Make categories and recipes unique to person

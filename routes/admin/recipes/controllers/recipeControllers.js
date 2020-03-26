@@ -95,6 +95,7 @@ recipeAPISearch:(req,res)=>{
   
     const newRecipe = new Recipe();
             newRecipe.category = category._id;
+            newRecipe.owner = req.user._id
             newRecipe.apiID = req.body.id;
             newRecipe.title = req.body.title;
             newRecipe.image = req.body.image;
