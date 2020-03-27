@@ -13,6 +13,16 @@
         </br>
         </br>
       </div>
+      <% for( let i = 0; i < categories.length; i++ ) { %>
+        
+         
+        <h1><%= categories[i].name %>" " <%= categories[i].owner%>"  "<%=  %> <%=categories[i].owner  %> </h1>
+      <li style="list-style:none">
+        <a href="/api/main/category-recipes/<%= categories[i]._id%>"
+          style="text-decoration:none;"> <%= categories[i].name %> </a>
+      </li>
+      <% } %>
+      
         <div>
           <img class="main-img" src="images/home-recipes.jpg"/>
         </div>
