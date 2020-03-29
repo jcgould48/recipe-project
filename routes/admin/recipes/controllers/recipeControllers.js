@@ -1,9 +1,9 @@
 const async = require('async')
-const { validationResult } = require('express-validator');
 const fetch = require('node-fetch')
 const Recipe = require('../models/Recipe')
 const flash = require('connect-flash')
 const Category = require('../../categories/models/Category')
+const {check, validationResult} = require('express-validator')
 
 
 module.exports ={
@@ -81,6 +81,14 @@ recipeAPISearch:(req,res)=>{
         },
 
     saveRecipe: (req, res, next)=>{
+
+      const errors = validationResult(req)
+        if(!errors.isEmpty()){
+            console.log(errors);
+            req.flash('error', 'Category cannot be empty');
+            return res.status(422).json({errors: errors.array()
+            })
+        }
        
         async.waterfall([
             (callback)=> {
