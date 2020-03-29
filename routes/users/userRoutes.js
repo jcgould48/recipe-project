@@ -5,7 +5,7 @@ const User = require('./models/User')
 require('../../lib/passport');
 
 
-// const {createUserCart} = require('../cart/controllers/cartController')
+const {createUserPreference} = require('../preferences/controllers/preferenceController')
 const {register, updatePassword, updateProfile} = require('./controllers/userController');
 const userValidation = require('./utils/userValidation');
 
@@ -18,7 +18,7 @@ router.get('/register', function(req, res, next){
  return res.render('auth/register', {errors: req.flash('errors')})
 })
 
-router.post('/register', userValidation, register);
+router.post('/register', userValidation, register, createUserPreference);
  
 router.get('/login', (req, res)=>{
     return res.render('auth/login', {errors: req.flash('errors')});
