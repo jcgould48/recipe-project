@@ -88,6 +88,7 @@ recipeAPISearch:(req,res)=>{
             req.flash('error', 'Category cannot be empty');
             return res.status(422).json({errors: errors.array()
             })
+            // .next()
         }
        
         async.waterfall([

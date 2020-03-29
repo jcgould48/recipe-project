@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const express = require('express')
 const Recipe = require('./models/Recipe')
-const categoryValidation = require('../validation/categoryValidation')
+const recipeValidation = require('./validation/recipeValidation')
 
 const {getSearchRecipe,getExtractRecipe, recipeAPISearch, recipeExtractor, getSingleRecipe, saveRecipe, deleteRecipe} = require('./controllers/recipeControllers')
 
@@ -17,7 +17,7 @@ router.get('/single-recipe/:id', (req, res, next)=>{
 router.get('/extract-recipe', getExtractRecipe);
 router.get('/extract', recipeExtractor);
 
-router.post('/single-recipe/category',categoryValidation, (req, res, next)=>{
+router.post('/single-recipe/category',recipeValidation, (req, res, next)=>{
 
     let id = req.params.id
 
