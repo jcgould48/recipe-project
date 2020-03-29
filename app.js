@@ -17,6 +17,7 @@ const adminRouter = require('./routes/admin/adminRoutes');
 const recipeRouter = require('./routes/admin/recipes/recipeRoutes');
 
 
+
 const getAllCategories = require('./routes/admin/middleware/getAllCategories');
 
 const app = express();
@@ -83,6 +84,7 @@ app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/admin', adminRouter);
 app.use('/api/main', recipeRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

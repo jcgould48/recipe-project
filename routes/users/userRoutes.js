@@ -5,7 +5,7 @@ const User = require('./models/User')
 require('../../lib/passport');
 
 
-const {createUserPreference} = require('../preferences/controllers/preferenceController')
+const {createUserPreference} = require('../admin/preferences/controllers/preferenceController')
 const {register, updatePassword, updateProfile} = require('./controllers/userController');
 const userValidation = require('./utils/userValidation');
 
