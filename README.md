@@ -12,6 +12,14 @@ extract category image
 Make categories and recipes unique to person
 
 
+Flash and preferences**
+
+
+
+heroku create jcgould-title
+
+git push herouk master
+
 <% for( let i = 0; i < categories.length; i++ ) { %>
                     <% if (categories[i].owner=user._id) { %>
                      
