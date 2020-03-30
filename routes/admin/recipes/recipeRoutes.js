@@ -24,8 +24,9 @@ router.post('/single-recipe/category',recipeValidation, (req, res, next)=>{
     saveRecipe(req, res, id)
 })
 
+
 router.get('/category-recipes/:id', (req, res, next)=>{
-    Recipe.find({category: req.params.id})
+    Recipe.find({category: req.params.id, owner: req.user._id})
     .populate('category') 
     
     .exec((err, recipes)=>{
@@ -34,29 +35,6 @@ router.get('/category-recipes/:id', (req, res, next)=>{
         return res.render('main/category-recipes',{recipes})
     })
 })
-
-
-// router.get('/category-recipes/:id', (req, res, next)=>{
-//     Cart.findOne({owner: req.user._id})
-//     .populate('items.item')
-//     .exec((err, foundCart)=>{
-//         if(err){
-//             return next(err);
-//         }
-//         return res.render('main/cart', {foundCart})
-//     })
-    
-//     Recipe.find({category: req.params.id})
-//     .populate('category') 
-    
-//     .exec((err, recipes)=>{
-//         if(err) return next(err)
-//         // return res.json({recipes});
-//         return res.render('main/category-recipes',{recipes})
-//     })
-// })
-
-
 
 router.delete('/single-recipe/:id', (req, res, next)=>{
     let id = req.params.id
