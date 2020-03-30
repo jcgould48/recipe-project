@@ -4,9 +4,18 @@ const User = require('../../users/models/User')
 
 
 // module.exports = (req, res, next) =>{
-//  console.log(req.user.id)
-//       Category.findOne({owner: req.user.id})
-//        .populate('name')
+//  if({_id :undefined }){
+//   Category.find({}, (err, categories)=>{
+         
+//                 if(err) return next(err);
+//                 res.locals.categories = categories;
+//                 next();
+//       }
+//       )
+//  }
+//  else{
+//       Category.find({owner: req.user._id})
+//        .populate('category')
 //        .exec((err, categories)=>{
 //         if(err){
 //           return next(err);
@@ -14,6 +23,7 @@ const User = require('../../users/models/User')
 //               res.locals.categories = categories;
 //               next();
 //     })
+//   }
 //   }
 
 

@@ -50,8 +50,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 
-app.use(getAllCategories)
-  
+
 
 app.use(flash());
 
@@ -63,7 +62,7 @@ app.use(session({
     url: process.env.MONGODB_URI,
     autoReconnect: true,
     cookie: {maxAge: 6000}
-
+    
   })
 }));
 
@@ -76,9 +75,10 @@ app.use((req, res, next)=>{
   res.locals.errors = req.flash('error');
   res.locals.message = req.flash('message');
   res.locals.success = req.flash('success');
-
+  
   next();
 })
+app.use(getAllCategories)
 
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);

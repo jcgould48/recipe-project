@@ -10,7 +10,7 @@ module.exports ={
 
 getSearchRecipe: (req, res, next)=>{
         // return res.json({categories});
-        return res.render('main/search-recipe')
+        return res.render('main/search-recipe', {success: req.flash('success')})
     },
 
 getExtractRecipe: (req, res, next)=>{
@@ -86,6 +86,7 @@ recipeAPISearch:(req,res)=>{
         if(!errors.isEmpty()){
             console.log(errors);
             req.flash('error', 'Category cannot be empty');
+
             return res.status(422).json({errors: errors.array()
             })
             // .next()
@@ -116,8 +117,8 @@ recipeAPISearch:(req,res)=>{
     }
     ]).catch((err) => console.log(err))
             
-                req.flash('success', 'Recipe saved!')
-                return res.redirect('/api/main/search-recipe')
+    req.flash('message', 'Recipe saved!')
+    return res.redirect('/api/main/search-recipe')
        
 },   
 

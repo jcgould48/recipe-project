@@ -20,10 +20,8 @@ module.exports = {
         category.owner = req.user._id
         category.name = req.body.name;
         category.save().then(category=>{
-            // console.log(category);
-            // return res.json({category})
-            // return res.redirect(`/api/admin/add-products/${category.name}`);
-            req.flash('success', 'New category created');//NOT WORKING
+            
+            req.flash('message', 'New category created');
             return res.redirect(`/api/admin/add-category`);
         })
         .catch(err=>{
