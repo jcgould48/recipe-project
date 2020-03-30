@@ -86,9 +86,9 @@ recipeAPISearch:(req,res)=>{
         if(!errors.isEmpty()){
             console.log(errors);
             req.flash('error', 'Category cannot be empty');
-
-            return res.status(422).json({errors: errors.array()
-            })
+            return res.redirect('/api/main/search-recipe')
+            // return res.status(422).json({errors: errors.array()
+            // })
             // .next()
         }
        
