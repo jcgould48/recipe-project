@@ -9,6 +9,7 @@ name:{type:String, default: '', lowercase: true, trim: true},
 amount: {type:String, default: '', lowercase: true, trim: true},
 unit: {type:String, default: '', lowercase: true, trim: true},
 image:{type:String, default: '', lowercase: true, trim: true},
+ingredients:{type:Array, default:''}
 });
 
 module.exports = mongoose.model('Ingredient', IngredientSchema);

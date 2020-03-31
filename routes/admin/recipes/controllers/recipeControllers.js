@@ -72,6 +72,7 @@ recipeAPISearch:(req,res)=>{
             .then((recipe) => {
                    
             //    return res.json({recipe})
+            console.log(req.body.name)
             res.locals.recipe = recipe
               return res.render('main/single-recipe', {recipe})
             })
@@ -112,11 +113,12 @@ recipeAPISearch:(req,res)=>{
             newRecipe.instructions = req.body.instructions;
             newRecipe.readyInMinutes = req.body.readyInMinutes;
             newRecipe.servings = req.body.servings;
+            newRecipe.ingredients = req.body.ingredients;
         
             newRecipe.save().catch(err=>console.log('saveerr..', err))
     }
     ]).catch((err) => console.log(err))
-            
+           
     req.flash('message', 'Recipe saved!')
     return res.redirect('/api/main/search-recipe')
        
@@ -130,7 +132,8 @@ deleteRecipe : (req, res, id)=>{
         .json({message: `Recipe not in database.`})
         else{
             recipe.remove()
-      return res.status(200).json({message: 'Recipe Deleted'})
+            req.flash('message', 'Recipe Deleted');
+            return res.redirect('/api/main/search-recipe')
     } 
 })
   },
@@ -146,18 +149,17 @@ deleteRecipe : (req, res, id)=>{
       .then((joke) => joke.json())
       .then((joke) => {
              
-      //    return res.json({recipe})
-      res.locals.joke = joke
-        return res.render('main/home', {joke})
+         return res.json({joke})
+      
       })
       .catch((err) => console.log(err))
      }
    },
 
-   textRecipes: (req, res)=>{
+   textIngredients: (req, res)=>{
     const accountSid = process.env.TWILIO_ACCT_SID;
     const authToken = process.env.TWILIO_AUTH_TKN;
-    const client = require('twilio')(accountSid, authToken);
+    const client = new twilio(accountSid, authToken);
     
     client.messages
       .create({

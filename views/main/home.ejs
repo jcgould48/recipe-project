@@ -13,7 +13,20 @@
         </br>
         </br>
       </div>
-      
+      <% if (user) { %>
+        <div>
+      <form role="form" method="GET" action="/api/main/get-joke">
+        <input
+        type="submit"
+        class="btn btn-md btn-secondary btn-block"
+        value="Want to hear a joke?"
+      />
+      </form>
+    </div>
+      <% } %>
+      <div class="spacer">
+      </br>
+    </div>
         <div>
           <img class="main-img" src="images/home-recipes.jpg"/>
         </div>

@@ -65,6 +65,12 @@
               id="id"
               value="<%=recipe.id%>"
             />
+              <input
+              type="hidden"
+              name="ingredients"
+              id="ingredients"
+              value="<%=recipe.extendedIngredients%>"
+            />
             <button type="submit" class="btn btn-outline-success btn-md">
               Save Recipe
             </button>
@@ -97,9 +103,9 @@
           </div>
         
         </div>
-        <form  role="form" method="GET" action="/api/main/text-recipe">
-          <button type="submit" class="btn btn-outline-danger btn-md delete-btn">
-              Text Recipes
+        <form  role="form" method="GET" action="/api/main/text-ingredients">
+          <button type="submit" class="btn btn-outline-info btn-md">
+              Text Ingredients
             </button>
       </form>
               <p>
