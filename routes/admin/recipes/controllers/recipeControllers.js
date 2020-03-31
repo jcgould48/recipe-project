@@ -4,7 +4,7 @@ const Recipe = require('../models/Recipe')
 const flash = require('connect-flash')
 const Category = require('../../categories/models/Category')
 const {check, validationResult} = require('express-validator')
-
+const twilio = require('twilio')
 
 module.exports ={
 
@@ -135,5 +135,37 @@ deleteRecipe : (req, res, id)=>{
 })
   },
 
-   
+   getJoke: (req, res,)=>{
+
+    if(req.isAuthenticated()) {
+      
+      const apiKey = `apiKey=${process.env.API_KEY}`
+      const url = `https://api.spoonacular.com/food/jokes/random?${apiKey}`;
+      ;
+      fetch(url)
+      .then((joke) => joke.json())
+      .then((joke) => {
+             
+      //    return res.json({recipe})
+      res.locals.joke = joke
+        return res.render('main/home', {joke})
+      })
+      .catch((err) => console.log(err))
+     }
+   },
+
+   textRecipes: (req, res)=>{
+    const accountSid = process.env.TWILIO_ACCT_SID;
+    const authToken = process.env.TWILIO_AUTH_TKN;
+    const client = require('twilio')(accountSid, authToken);
+    
+    client.messages
+      .create({
+         body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
+         from: '+12018014799',
+         to: '+13863149563'
+       })
+      .then(message => console.log(message.sid));
+
+   },
 }
