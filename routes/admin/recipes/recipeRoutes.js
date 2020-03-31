@@ -3,7 +3,7 @@ const express = require('express')
 const Recipe = require('./models/Recipe')
 const recipeValidation = require('./validation/recipeValidation')
 
-const {getSearchRecipe,getExtractRecipe, recipeAPISearch, recipeExtractor, getSingleRecipe, saveRecipe, deleteRecipe, getJoke, textIngredients} = require('./controllers/recipeControllers')
+const {getSearchRecipe,getExtractRecipe, recipeAPISearch, recipeExtractor, getSingleRecipe, saveRecipe, deleteRecipe, getJoke,} = require('./controllers/recipeControllers')
 
 router.get('/search-recipe', getSearchRecipe)
 router.get('/search', recipeAPISearch);
@@ -18,7 +18,7 @@ router.get('/single-recipe/:id', (req, res, next)=>{
 router.get('/extract-recipe', getExtractRecipe);
 router.get('/extract', recipeExtractor);
 router.get('/get-joke', getJoke)
-router.get('/text-ingredients', textIngredients)
+// router.post('/text-ingredients',textIngredients) //Future add on
 
 router.post('/single-recipe/category',recipeValidation, (req, res, next)=>{
 

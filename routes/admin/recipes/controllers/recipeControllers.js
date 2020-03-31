@@ -156,18 +156,28 @@ deleteRecipe : (req, res, id)=>{
      }
    },
 
-   textIngredients: (req, res)=>{
-    const accountSid = process.env.TWILIO_ACCT_SID;
-    const authToken = process.env.TWILIO_AUTH_TKN;
-    const client = new twilio(accountSid, authToken);
-    
-    client.messages
-      .create({
-         body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
-         from: '+12018014799',
-         to: '+13863149563'
-       })
-      .then(message => console.log(message.sid));
+  //  textIngredients: (req, res)=>{
 
-   },
+    // Recipe.findOne(222136)
+    // .then((recipe)=>{
+    //     if (!recipe)  return res.status(400)
+    //     .json({message: `Recipe not in database.`})
+    //     else{
+            
+    //         return res.json(recipe.ingredients)
+    // } 
+// })
+    // const accountSid = process.env.TWILIO_ACCT_SID;
+    // const authToken = process.env.TWILIO_AUTH_TKN;
+    // const client = new twilio(accountSid, authToken);
+    
+    // client.messages
+    //   .create({
+    //      body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
+    //      from: '+12018014799',
+    //      to: '+13863149563'
+    //    })
+    //   .then(message => console.log(message.sid));
+
+  //  },
 }

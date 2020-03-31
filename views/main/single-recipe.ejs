@@ -103,11 +103,17 @@
           </div>
         
         </div>
-        <form  role="form" method="GET" action="/api/main/text-ingredients">
+        <!-- <form  role="form" method="POST" action="/api/main/text-ingredients">
+          <input
+          type="hidden"
+          name="ingredients"
+          id="ingredients"
+          value=recipe.extendedIngredients"
+        />
           <button type="submit" class="btn btn-outline-info btn-md">
               Text Ingredients
             </button>
-      </form>
+      </form> -->
               <p>
                 <div class="row">
                   <% recipe.extendedIngredients.forEach(({name, amount, unit, image}) =>{%>
