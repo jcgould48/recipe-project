@@ -1,35 +1,55 @@
 
-##Welcome to the {Home.Recipe} Application
+## Welcome to the {Home.Recipe} Application
 
-[Link to project on heroku](https://git.heroku.com/jcgould-home-recipes.git)
+[Link to project on heroku](https://jcgould-home-recipes.herokuapp.com/)
 
-This app was made possible by the Spoonacular app (https://spoonacular.com/food-api)
+This app was made possible by the [Spoonacular API](https://spoonacular.com/food-api)
 
 
 
 Available routes:
 
-/ - main page accessible only after authorization. Features: latest 'covid-19' related news, user posts, and live chat.
+Route | Name| Description 
+------------ | ------------- | -------------
+/ | Home |Main page which allows for more navigation once users are registered and log in 
+||| 
+**/api/users...**| |
+|||
+/register| Register | New Users can register to use app
+/login| Login | Registered users can login to use the app
+/logout | Logout | Users can log out of app
+/profile| User Profile | Users can see their profile information
+/update-profile| Update Profile | Users can update their name, email, and password 
+|||
+**/api/admin...**| |
+|||
+/add-category | Add Category | Users and admin can add categories to help organize recipes
+|||
+|**/api/main...**||
+|||
+/search-recipe| Search Recipe | Enter one or multiple ingredients into search bar to find relevant recipes
+/list-recipes| List Recipes | Lists recipes that include the ingredients enter in the search bar
+/single-recipe/:recipe-ID | Single Recipe | Provides a more detailed look at an individual recipe based off of user selection
+/extract-recipe | Extract Recipe | Allows users to bring in recipes from other webpages
+/category-recipes/:category-ID| Categorized Recipes | Shows all the recipes the user saved in that specific category
+|||
+|||
 
-/logout - logs out user and destroys session.
 
-/api/users/
+Users have the option to save or delete any recipe once they are at the individual recipe's page.
 
-GET
-/login - login and register forms.
-/profile - profile loaded with features dependent on a role (user or admin)
-POST
-/login - submits login form and check if user is in the database. If not redirects back and flashes error message
-/register - submits register form, checks all fields, looks for duplicate based on email.
-/createpost - submits form to create a new post in database
-/add-comment/:id/:user - submits form to make a comment under specific post. :id - unique id of a post. :user - users id
-PUT
-/update-profile - submits form to update user information in database
-/update-password - submits form to update user's password in database
-/api/admin - validation implemented based on account role.
 
-PUT
-/update-visibility/:id - admin account has ability to change visibility for every user post(:id - id of a post). Upon changing visibility, post no longer will be present in posts tab but still be visible in profile section
-DELETE
-/delete-user/:email - deletes a user from database. :email - users email has to match with database
-delete-post/:postId - deletes a post from database
+
+## If you would like to work with this App locally:
+
+1. Fork and clone this repository
+2. Install all dependencies
+3. Sign up for a Spoonacular API Key
+4. Create .env file and populate it with the following.
+
+   * PORT = Number of your preferred port
+    * SESSION_SECRET = 'Any string of text'
+     * MONGODB_URI = 'Path to your MongoDB storage'
+   * API_KEY = 'The unique API Key you received after signing up at Spoonacular'
+
+To launch the server type: node ./bin/www
