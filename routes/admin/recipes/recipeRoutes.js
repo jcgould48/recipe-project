@@ -13,11 +13,10 @@ router.get('/single-recipe/:id', (req, res, next)=>{
     getSingleRecipe(req, res, id)
 });
 
-router.get('/shopping-list/:slid', (req, res, next)=>{
-    let id = req.params.slid
-    console.log('route slid....',id)
-    getShoppingList(req, res, id)
-})
+router.get('/shopping-list', (req, res, next) => {
+    return res.render( 'main/shopping-list')})
+    
+router.post('/shopping-list', getShoppingList)
 
 
 router.get('/extract-recipe', getExtractRecipe);

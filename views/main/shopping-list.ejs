@@ -13,7 +13,19 @@
         </br>
         </br>
       </div>
-      <h1><%= recipe.id %> </h1>
+      <h2>Shopping List for <%= recipe.title %> </h2>
+      <div class="spacer">
+      </br>
+      </br>
+    </div>
+      <% recipe.extendedIngredients.forEach(({name, amount, unit}) =>{%>
+        <ul>
+          <li>
+            <%= name %> &times;  <%= amount %> <%= unit %> 
+          </li>
+        </ul>
+            
+          <%})%> 
       <div class="spacer">
       </br>
     </div>

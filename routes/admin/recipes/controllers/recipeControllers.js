@@ -138,11 +138,11 @@ deleteRecipe : (req, res, id)=>{
 })
   },
 
-  getShoppingList: (req, res, id)=>{
+  getShoppingList: (req, res)=>{
        
-        console.log('this issss the newid', id)
+       let id = req.body.slid
         const apiKey = `apiKey=${process.env.API_KEY}`
-        const url = `https://api.spoonacular.com/recipes/${req.body.slid}/information?${apiKey}`;
+        const url = `https://api.spoonacular.com/recipes/${id}/information?${apiKey}`;
         ;
         fetch(url)
         .then((recipe) => recipe.json())

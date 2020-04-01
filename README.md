@@ -32,6 +32,7 @@ Route | Name| Description
 /single-recipe/:recipe-ID | Single Recipe | Provides a more detailed look at an individual recipe based off of user selection
 /extract-recipe | Extract Recipe | Allows users to bring in recipes from other webpages
 /category-recipes/:category-ID| Categorized Recipes | Shows all the recipes the user saved in that specific category
+/shopping-list | Shopping List | Provides a quick and convenient list of the ingredients needed for the recipe
 |||
 |||
 
