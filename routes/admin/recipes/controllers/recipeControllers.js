@@ -138,6 +138,25 @@ deleteRecipe : (req, res, id)=>{
 })
   },
 
+  getShoppingList: (req, res, id)=>{
+       
+        console.log('this issss the newid', id)
+        const apiKey = `apiKey=${process.env.API_KEY}`
+        const url = `https://api.spoonacular.com/recipes/${req.body.slid}/information?${apiKey}`;
+        ;
+        fetch(url)
+        .then((recipe) => recipe.json())
+        .then((recipe) => {
+               
+        //    return res.json({recipe})
+        res.locals.recipe = recipe
+          return res.render('main/shopping-list', {recipe})
+        })
+        .catch((err) => console.log(err))
+       
+        
+    },
+
    getJoke: (req, res,)=>{
 
     if(req.isAuthenticated()) {

@@ -101,19 +101,21 @@
               <p class="card-text"><small class="text-muted"><%-recipe.instructions %></small></p>
             </div>
           </div>
-        
+        </br>
         </div>
-        <!-- <form  role="form" method="POST" action="/api/main/text-ingredients">
+        <form  role="form" method="GET" action="/api/main/shopping-list">
           <input
-          type="hidden"
-          name="ingredients"
-          id="ingredients"
-          value=recipe.extendedIngredients"
-        />
+                          type="hidden"
+                          name="slid"
+                          id="slid"
+                          value="<%=recipe.id%>"
+                        />
           <button type="submit" class="btn btn-outline-info btn-md">
-              Text Ingredients
+              Create Shopping List
             </button>
-      </form> -->
+      </form>
+    </br>
+    </br>
               <p>
                 <div class="row">
                   <% recipe.extendedIngredients.forEach(({name, amount, unit, image}) =>{%>
