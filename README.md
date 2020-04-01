@@ -52,4 +52,3 @@ Users have the option to save or delete any recipe once they are at the individu
      * MONGODB_URI = 'Path to your MongoDB storage'
    * API_KEY = 'The unique API Key you received after signing up at Spoonacular'
 
-To launch the server type: node ./bin/www
