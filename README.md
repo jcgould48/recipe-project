@@ -33,13 +33,13 @@ Route | Name| Description
 /extract-recipe | Extract Recipe | Allows users to bring in recipes from other webpages
 /category-recipes/:category-ID| Categorized Recipes | Shows all the recipes the user saved in that specific category
 /shopping-list | Shopping List | Provides a quick and convenient list of the ingredients needed for the recipe
+/home-joke | Joke | A quick food joke bonus for users
 |||
 |||
 
+#### Users have the option to save or delete any recipe once they are at the individual recipe's page.
 
-Users have the option to save or delete any recipe once they are at the individual recipe's page.
-
-
+***
 
 ## If you would like to work with this App locally:
 

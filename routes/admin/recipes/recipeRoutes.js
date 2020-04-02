@@ -21,7 +21,7 @@ router.post('/shopping-list', getShoppingList)
 
 router.get('/extract-recipe', getExtractRecipe);
 router.get('/extract', recipeExtractor);
-router.get('/get-joke', getJoke)
+router.get('/home-joke', getJoke)
 // router.post('/text-ingredients',textIngredients) //Future add on
 
 router.post('/single-recipe/category',recipeValidation, (req, res, next)=>{

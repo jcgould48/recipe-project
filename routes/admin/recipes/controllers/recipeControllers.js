@@ -168,7 +168,9 @@ deleteRecipe : (req, res, id)=>{
       .then((joke) => joke.json())
       .then((joke) => {
              
-         return res.json({joke})
+        //  return res.json({joke})
+        // res.locals.recipe = recipe
+          return res.render('main/home-joke', {joke})
       
       })
       .catch((err) => console.log(err))
