@@ -44,7 +44,7 @@ Route | Name| Description
 ## If you would like to work with this App locally:
 
 1. Fork and clone this repository
-2. Install all dependencies
+2. npm install in directory
 3. Sign up for a Spoonacular API Key
 4. Create .env file and populate it with the following.
 
@@ -55,7 +55,7 @@ Route | Name| Description
 
 
 ***
-Node Modules necessary for app:
+Node Modules included in app:
 express
 ejs
 http-errors
