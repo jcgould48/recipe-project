@@ -53,3 +53,24 @@ Route | Name| Description
      * MONGODB_URI = 'Path to your MongoDB storage'
    * API_KEY = 'The unique API Key you received after signing up at Spoonacular'
 
+
+***
+Node Modules necessary for app:
+express
+ejs
+http-errors
+path
+cookie-parser
+morgan
+mongoose
+connect-flash
+express-session
+connect-mongo
+passport
+method-override
+dotenv
+async
+node-fetch
+express-validator
+bcryptjs
+faker
