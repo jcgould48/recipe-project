@@ -128,8 +128,12 @@ deleteRecipe : (req, res, id)=>{
   let apiID=id
     Recipe.findOne({apiID})
     .then((recipe)=>{
-        if (!recipe)  return res.status(400)
-        .json({message: `Recipe not in database.`})
+        if (!recipe){  
+       
+        req.flash('error', 'Recipe not in database');
+        return res.redirect('/api/main/search-recipe')
+      }
+        // .json({message: `Recipe not in database.`})
         else{
             recipe.remove()
             req.flash('message', 'Recipe Deleted');
